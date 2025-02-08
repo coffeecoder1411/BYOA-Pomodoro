@@ -1,0 +1,151 @@
+:root {
+    --bg-color: #f8f9fe;
+    --container-bg: rgba(255, 255, 255, 0.95);
+    --text-color: #2d3748;
+    --start-button-bg: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --start-button-hover: linear-gradient(135deg, #059669 0%, #047857 100%);
+    --pause-button-bg: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    --pause-button-hover: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    --reset-button-bg: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    --reset-button-hover: linear-gradient(135deg, #64748b 0%, #475569 100%);
+    --mode-text-color: #64748b;
+    --shadow-color: rgba(148, 163, 184, 0.1);
+    --timer-color: #7c3aed;
+    --startpause-button-bg: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --startpause-button-hover: linear-gradient(135deg, #059669 0%, #047857 100%);
+    --mode-toggle-button-bg: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    --mode-toggle-button-hover: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+}
+
+[data-theme="dark"] {
+    --bg-color: #0f172a;
+    --container-bg: rgba(30, 41, 59, 0.95);
+    --text-color: #f1f5f9;
+    --start-button-bg: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --start-button-hover: linear-gradient(135deg, #059669 0%, #047857 100%);
+    --pause-button-bg: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    --pause-button-hover: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    --reset-button-bg: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    --reset-button-hover: linear-gradient(135deg, #64748b 0%, #475569 100%);
+    --mode-text-color: #94a3b8;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --timer-color: #a78bfa;
+    --startpause-button-bg: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --startpause-button-hover: linear-gradient(135deg, #059669 0%, #047857 100%);
+    --mode-toggle-button-bg: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    --mode-toggle-button-hover: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    text-align: center;
+    background-color: var(--container-bg);
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px var(--shadow-color);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timer {
+    font-size: 5rem;
+    font-weight: 700;
+    margin: 2.5rem 0;
+    color: var(--timer-color);
+    text-shadow: 0 2px 4px rgba(124, 58, 237, 0.2);
+    font-variant-numeric: tabular-nums;
+    transition: color 0.3s ease;
+}
+
+.controls button {
+    font-size: 1.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0;
+    margin: 0 1rem;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controls button[data-action="startPause"] {
+    background: var(--startpause-button-bg);
+}
+
+.controls button[data-action="startPause"]:hover {
+    background: var(--startpause-button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.25);
+}
+
+.controls button[data-action="mode-toggle"] {
+    background: var(--mode-toggle-button-bg);
+}
+
+.controls button[data-action="mode-toggle"]:hover {
+    background: var(--mode-toggle-button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.25);
+}
+
+.controls button[data-action="reset"] {
+    background: var(--reset-button-bg);
+}
+
+.controls button[data-action="reset"]:hover {
+    background: var(--reset-button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(148, 163, 184, 0.25);
+}
+
+.controls button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mode {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    color: var(--mode-text-color);
+    font-weight: 500;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+#theme-toggle-btn {
+    background: var(--container-bg);
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 0.75rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+#theme-toggle-btn:hover {
+    transform: rotate(15deg) translateY(-2px);
+    box-shadow: 0 6px 16px var(--shadow-color);
+} 
